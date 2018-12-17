@@ -36,7 +36,11 @@ _默认会将头文件安装在/usr/local/include/slog/目录下,动态库安装
 
 ### nbredis
 下载之后调用./install.sh编译安装  
-_默认会将头文件安装在/usr/local/include/nbredis/目录下,动态库安装于/usr/local/lib/libnbredis.so_  
+_默认会将头文件安装在/usr/local/include/nbredis/目录下,动态库安装于/usr/local/lib/libnbredis.so_    
+
+### compile
+gcc -g demo.c -lm -lslog -lhiredis -lnbredis -o non_block  
+如果找不到动态库请先将/usr/local/lib加入到/etc/ld.so.conf 然后执行/sbin/ldconfig  
 
 ---
 
