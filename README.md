@@ -30,12 +30,12 @@ _默认会将头文件安装在/usr/local/include/hiredis/目录下,动态库安
 由开发者本人开发的一个网络&本地日志库,能满足应用程序各项基本需求  
 下载地址:(https://github.com/nmsoccer/slog/archive/master.zip)  
 安装方法:  
-unzip xx.zip
-./install.sh
+unzip xx.zip  
+./install.sh  
 _默认会将头文件安装在/usr/local/include/slog/目录下,动态库安装于/usr/local/lib/libslog.so_
 
 ### nbredis
-下载之后调用./install.sh编译安装
+下载之后调用./install.sh编译安装  
 _默认会将头文件安装在/usr/local/include/nbredis/目录下,动态库安装于/usr/local/lib/libnbredis.so_  
 
 ---
@@ -58,7 +58,7 @@ typedef enum
 REDIS_LOG_DEBUG将打印详细信息;REDIS_LOG_INFO将打印执行中的一般信息;REDIS_LOG_ERR:只打印错误信息  
 * 返回值: >=0 成功并返回对应的redis-descripor描述符; -1:失败  
 
-_*使用备注*_  
+* _*备注*_  
 调用该函数可以打开并链接多个redis-server实例，但不能同时open相同的ip&port二元组  
 
 ### REDIS_CONN_FLAG redis_isconnect(int rd);  
@@ -81,7 +81,7 @@ typedef enum
 _在已打开的描述符上进行重连_
 * rd:已成功打开的redis-descripor描述符  
 * 返回值:==0 成功 -1 失败  
-_*备注*_  
+* _*备注*_  
 不能在已成功链接的描述符上进行再次重连，这样会返回失败
 
 ### int redis_tick();
@@ -118,7 +118,8 @@ typedef enum
 _关闭已打开的描述符并释放链接_
 
 ---
-##演示程序(我们假设已经安装好了依赖库hiredis及slog)  
+## 演示程序  
+我们假设已经安装好了依赖库hiredis及slog  
 1. 我们建立有两个成员的数组，分别链接两个redis-server实例  
 ```
 #include <stdio.h>
@@ -270,8 +271,9 @@ int main(int argc , char **argv)
 }
 ```
 6. 编译并执行  
-gcc -g demo.c -lm -lslog -lhiredis -lnbredis -o non_block
-我们使用trig来使得进程执行一次相关命令，有些数据已经提前放入server之中，下面是打印结果:
+gcc -g demo.c -lm -lslog -lhiredis -lnbredis -o non_block  
+_如果找不到动态库请先将/usr/local/lib加入到/etc/ld.so.conf 然后执行/sbin/ldconfig_  
+下面是打印结果:
 ```
 [my_callback] result:[0] private data:[AUTH:] private_len:[5] argc:[1]
   <0>OK<2>
