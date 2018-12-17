@@ -1,4 +1,4 @@
-# nbredis  
+# NBREDIS  
 a non-block redis client library  
 一个基于hiredis封装的redis非阻塞异步调用请求库.
 
@@ -20,14 +20,14 @@ _备注_:该函数库非线程安全
 这是由redis开源社区对外发布的客户端API包
 下载地址:(https://github.com/redis/hiredis/archive/master.zip)  
 安装方法:  
-unzip hiredis-master.zip  
-cd hiredis-master  
+unzip xx.zip  
+cd xx  
 make  
 make install  
 _默认会将头文件安装在/usr/local/include/hiredis/目录下,动态库安装于/usr/local/lib/libnbredis.so_
 
 ### slog
-由开发者本人开发的一个简洁网络&本地日志库,基本满足应用程序各项需求  
+由开发者本人开发的一个网络&本地日志库,能满足应用程序各项基本需求  
 下载地址:(https://github.com/nmsoccer/slog/archive/master.zip)  
 安装方法:  
 unzip xx.zip
