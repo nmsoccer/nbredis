@@ -15,6 +15,10 @@ Created by soullei 2018-11-23
 #include <sys/socket.h>
 #include <slog/slog.h>
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 //log level
 typedef enum 
 {
@@ -103,5 +107,9 @@ extern int redis_exec(int rd , char *cmd , REDIS_CALLBACK callback , char *priva
 extern int redis_close(int rd);
 
 /************API FUNC*****************/
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif
