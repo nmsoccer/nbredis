@@ -117,7 +117,6 @@ typedef enum
 **```int redis_close(int rd);```**    
 _关闭已打开的描述符并释放链接_
 
----
 ## 演示程序  
 我们假设已经安装好了依赖库hiredis及slog  
 1. 我们建立有两个成员的数组，分别链接两个redis-server实例  
