@@ -2,8 +2,6 @@
 a non-block redis client library  
 一个基于hiredis封装的redis非阻塞异步调用请求库.
 
----
-
 **nbredis**是一个基于hiredis封装的，非阻塞的异步redis读写请求库。在异步处理上不使用hiredis自带的较为复杂的异步接口，而是使用hireids基础的api接口来实现.适合于比如游戏单进程的对于redis服务器的读写请求.    
 特点概述:   
 - **接口精简** ：只由少数几个API接口构成.  
@@ -13,7 +11,6 @@ a non-block redis client library
 
 _备注_:该函数库非线程安全
 
----
 ## 安装步骤
 本开发库目前只依赖于hiredis和slog，下面简单介绍下其依赖库的下载与安装
 ### hiredis  
@@ -42,10 +39,9 @@ _默认会将头文件安装在/usr/local/include/nbredis/目录下,动态库安
 gcc -g demo.c -lm -lslog -lhiredis -lnbredis -o non_block  
 如果找不到动态库请先将/usr/local/lib加入到/etc/ld.so.conf 然后执行/sbin/ldconfig  
 
----
 
 ## API
-#### int redis_open(char *ip , int port , int timeout , REDIS_LOG_LEVEL log_level);
+ **```int redis_open(char *ip , int port , int timeout , REDIS_LOG_LEVEL log_level);```**  
 _打开一个redis-descripor描述符，并链接到目标redis-server服务器_  
 * ip&port: redis-server服务器所在的IP地址和端口
 * timeout: 链接超时时间(秒)
@@ -65,7 +61,7 @@ REDIS_LOG_DEBUG将打印详细信息;REDIS_LOG_INFO将打印执行中的一般�
 * _*备注*_  
 调用该函数可以打开并链接多个redis-server实例，但不能同时open相同的ip&port二元组  
 
-### REDIS_CONN_FLAG redis_isconnect(int rd);  
+**```REDIS_CONN_FLAG redis_isconnect(int rd);```**    
 _检查一个打开的描述符之链接标记_
 * rd:已成功打开的redis-descripor描述符  
 * 返回值，REDIS_CONN_FLAG  
@@ -81,18 +77,18 @@ typedef enum
 
 ```
 
-### int redis_reconnect(int rd);
+**```int redis_reconnect(int rd);```**  
 _在已打开的描述符上进行重连_
 * rd:已成功打开的redis-descripor描述符  
 * 返回值:==0 成功 -1 失败  
 * _*备注*_  
 不能在已成功链接的描述符上进行再次重连，这样会返回失败
 
-### int redis_tick();
+**```int redis_tick();```**  
 _在主函数loop里进行驱动的定时检查_  
 ***使用库的应用进程必须将该函数纳入进程的主循环当中周期调用，否则可能无法实现库函数功能***  
 
-### int redis_exec(int rd , char *cmd , REDIS_CALLBACK callback , char *private , int private_len);
+**```int redis_exec(int rd , char *cmd , REDIS_CALLBACK callback , char *private , int private_len);```**  
 _执行一个redis命令_  
 * rd:已成功打开的redis-descripor描述符  
 * cmd:redis命令  
@@ -118,7 +114,7 @@ typedef enum
 * argv:请求结果的字符串数组
 * arglen:每个请求结果的字符串长度
 
-### int redis_close(int rd);  
+**```int redis_close(int rd);```**    
 _关闭已打开的描述符并释放链接_
 
 ---
