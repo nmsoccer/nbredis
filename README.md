@@ -1,4 +1,5 @@
 # NBREDIS  
+[![996.icu](https://img.shields.io/badge/link-996.icu-red.svg)](https://996.icu)  
 a non-block redis client library  
 一个基于hiredis封装的redis非阻塞异步调用请求库.
 
